@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jubeat scores record website</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>
+</head>
+
+<body>
+    <h1 style="background-color: #C0C0C0" id="title"></h1>
+    <div>
+        <table id="score_table"></table>
+    </div>
+
+<script>
+    var score_table = $("#score_table");
+    sid = parseInt(window.location.href.split("/song/?sid=")[1]);
+    $.ajax({
+        url: "/song/info/?sid=" + sid,
+        type: "get",
+        dataType: "json",
+        success: function(callback) {
+            $("#title").html(callback.title);
+            var score_table = $("#score_table");
+            score_table.bootstrapTable( {
+                url: "/song/scores/?sid=" + callback.sid,
+                method: "get",
+                dataType: "json",
+                columns: [
+                    {
+                        field: "pid",
+                        title: "Player",
+                        align: "left",
+                        valign: "middle",
+                        width: "500",
+                    },
+                    {
+                        field: "bas_score",
+                        title: "Basic",
+                        align: "center",
+                        valign: "middle",
+                        width: "200",
+                    },
+                    {
+                        field: "bas_rank",
+                        title: "Ranking",
+                        align: "center",
+                        valign: "middle",
+                        width: "200",
+                    },
+                    {
+                        field: "adv_score",
+                        title: "Advanced",
+                        align: "center",
+                        valign: "middle",
+                        width: "200",
+                    },
+                    {
+                        field: "adv_rank",
+                        title: "Ranking",
+                        align: "center",
+                        valign: "middle",
+                        width: "200",
+                    },
+                    {
+                        field: "ext_score",
+                        title: "Extreme",
+                        align: "center",
+                        valign: "middle",
+                        width: "200",
+                    },
+                    {
+                        field: "ext_rank",
+                        title: "Ranking",
+                        align: "center",
+                        valign: "middle",
+                        width: "200",
+                    }
+                ],
+                height: "500",
+                search: true,
+                formatLoadingMessage: function () {
+                    return "";
+                },
+            });
+        }
+    });
+
+
+</script>
+</body>
+
+</html>
