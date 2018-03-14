@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jubeat scores record website</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>
+</head>
+
+<body>
+    <div class="row" style="background-color: #C0C0C0">
+        <div class="col-md-8">
+            <h1 id="player"></h1>
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <br/>
+            <button type="button" class="btn btn-default" onclick="switchPage()">查看</button>
+        </div>
+    </div>
+    <div>
+        <table id="score_table"></table>
+    </div>
+
+<script>
+    var score_table = $("#score_table");
+    uid = window.location.href.split("/player/detail/?uid=")[1];
+    $.ajax({
+        url: "/u_check/",
+        type: "get",
+        data: "uid=" + uid,
+        dataType: "text",
+        success: function(callback) {
+            $("#player").html(callback);
+            score_table.bootstrapTable( {
+                url: "/scores/?uid=" + uid,
+                method: "get",
+                dataType: "json",
+                columns: [
+                {
+                    field: "Title",
+                    title: "Title",
+                    align: "left",
+                    valign: "middle",
+                    width: "200",
+                    formatter: function(value, row, index){
+                        return "<a href='/song/?sid=" + row.SID + "'>" + row.Title + "</a>";
+                    }
+                },
+                {
+                    field: "Artist",
+                    title: "Artist",
+                    align: "left",
+                    valign: "middle",
+                    width: "200"
+                },
+                {
+                    field: "Play_Count",
+                    title: "PC",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "BAS_Level",
+                    title: "BAS",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "BAS_Score",
+                    title: "Score",
+                    align: "center",
+                    valign: "middle",
+                    width: "80"
+                },
+                {
+                    field: "BAS_FC",
+                    title: "FC",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "ADV_Level",
+                    title: "ADV",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "ADV_Score",
+                    title: "Score",
+                    align: "center",
+                    valign: "middle",
+                    width: "80"
+                },
+                {
+                    field: "ADV_FC",
+                    title: "FC",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "EXT_Level",
+                    title: "EXT",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "EXT_Score",
+                    title: "Score",
+                    align: "center",
+                    valign: "middle",
+                    width: "80"
+                },
+                {
+                    field: "EXT_FC",
+                    title: "FC",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                }
+                ],
+                height: "650",
+                search: true,
+                formatLoadingMessage: function () {
+                    return "";
+                },
+            });
+        }
+    });
+
+    function switchPage() {
+        window.location.href="/player/summary/?uid="+uid;
+    };
+</script>
+</body>
+
+</html>

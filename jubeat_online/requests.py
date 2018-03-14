@@ -2,9 +2,7 @@
 from __future__ import unicode_literals
 
 from django.http import HttpResponse
-from .Scores import Scores, Songs, ID
-
-# Create your views here.
+from .keyOperations import Player, Songs, ID
 
 
 def upload(request):
@@ -14,34 +12,56 @@ def upload(request):
         wal_file_obj = request.FILES.get("wal")
         pid = request.POST["id"]
         if file_obj:
-            scores_obj = Scores(scores_file=file_obj, wal_file=wal_file_obj, player_id=pid)
-            uploading = scores_obj.add_to_database()
+            player_obj = Player(scores_file=file_obj, wal_file=wal_file_obj, player_id=pid)
+            uploading = player_obj.add_to_database()
             if uploading is False:
                 return HttpResponse("WRONG")
-            id_check, old_pid = scores_obj.id_checker()
+            id_check, old_pid = player_obj.id_checker()
             if id_check is False:
                 return HttpResponse(old_pid)
             return HttpResponse("OK")
     return HttpResponse("EMPTY")
 
 
-def check(request):
+def p_check(request):
+    """Check a given pid exists or not."""
     pid = request.GET["pid"]
-    checker = ID(pid)
+    print(pid)
+    checker = ID(pid=pid)
     return HttpResponse(checker.uid)
 
 
-def get_scores(request):
+def u_check(request):
+    """Check a given uid exists or not."""
     uid = request.GET["uid"]
-    scores_obj = Scores(user_id=uid)
-    return HttpResponse(scores_obj.get_from_database())
+    checker = ID(uid=uid)
+    return HttpResponse(checker.pid)
+
+
+def get_scores(request):
+    """Get all scores of a player."""
+    uid = request.GET["uid"]
+    player_obj = Player(user_id=uid)
+    return HttpResponse(player_obj.get_from_database())
+
+
+def get_scores_summary(request):
+    """Summary all scores of a player."""
+    uid = request.GET["uid"]
+    player_obj = Player(user_id=uid)
+    song_obj = Songs()
+    return HttpResponse(player_obj.get_score_summary(song_obj.song_classification()))
+
 
 def get_song_info(request):
+    """Get a song's info."""
     sid = int(request.GET["sid"])
     song_obj = Songs()
     return HttpResponse(song_obj.get_song_info(sid))
 
+
 def get_song_scores(request):
+    """Get all player's scores of a single song."""
     sid = int(request.GET["sid"])
     song_obj = Songs()
     return HttpResponse(song_obj.get_song_scores(sid))

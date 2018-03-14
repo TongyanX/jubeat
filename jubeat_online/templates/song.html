@@ -16,7 +16,27 @@
 </head>
 
 <body>
-    <h1 style="background-color: #C0C0C0" id="title"></h1>
+    <div class="row" style="background-color: #C0C0C0">
+        <div class="col-md-8">
+            <h1 id="title"></h1>
+            <h2 id="artist"></h2>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-1">
+            <br/>
+            <h4 id="bas"></h4>
+            <h4 id="adv"></h4>
+            <h4 id="ext"></h4>
+        </div>
+        <div class="col-md-2">
+            <br/>
+            <h4 id="bas_level"></h4>
+            <h4 id="adv_level"></h4>
+            <h4 id="ext_level"></h4>
+        </div>
+    </div>
+
     <div>
         <table id="score_table"></table>
     </div>
@@ -29,64 +49,102 @@
         type: "get",
         dataType: "json",
         success: function(callback) {
-            $("#title").html(callback.title);
+            $("#title").html(callback.Title);
+            $("#artist").html(callback.Artist);
+            $("#bas").html("BASIC");
+            $("#adv").html("ADVANCED");
+            $("#ext").html("EXTREME");
+            $("#bas_level").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLEVEL " + callback.BAS_Level);
+            $("#adv_level").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLEVEL " + callback.ADV_Level);
+            $("#ext_level").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLEVEL " + callback.EXT_Level);
             var score_table = $("#score_table");
             score_table.bootstrapTable( {
-                url: "/song/scores/?sid=" + callback.sid,
+                url: "/song/scores/?sid=" + callback.SID,
                 method: "get",
                 dataType: "json",
                 columns: [
                     {
-                        field: "pid",
+                        field: "PID",
                         title: "Player",
                         align: "left",
                         valign: "middle",
-                        width: "500",
+                        width: "200",
+                        formatter: function(value, row, index){
+                            return "<a href='/player/detail/?uid=" + row.UID + "'>" + row.PID + "</a>";
+                        }
                     },
                     {
-                        field: "bas_score",
+                        field: "Play_Count",
+                        title: "PC",
+                        align: "center",
+                        valign: "middle",
+                        width: "50"
+                    },
+                    {
+                        field: "BAS_Score",
                         title: "Basic",
                         align: "center",
                         valign: "middle",
-                        width: "200",
+                        width: "80"
                     },
                     {
-                        field: "bas_rank",
+                        field: "BAS_FC",
+                        title: "FC",
+                        align: "center",
+                        valign: "middle",
+                        width: "50"
+                    },
+                    {
+                        field: "BAS_Rank",
                         title: "Ranking",
                         align: "center",
                         valign: "middle",
-                        width: "200",
+                        width: "50"
                     },
                     {
-                        field: "adv_score",
+                        field: "ADV_Score",
                         title: "Advanced",
                         align: "center",
                         valign: "middle",
-                        width: "200",
+                        width: "80"
                     },
                     {
-                        field: "adv_rank",
+                        field: "ADV_FC",
+                        title: "FC",
+                        align: "center",
+                        valign: "middle",
+                        width: "50"
+                    },
+                    {
+                        field: "ADV_Rank",
                         title: "Ranking",
                         align: "center",
                         valign: "middle",
-                        width: "200",
+                        width: "50"
                     },
                     {
-                        field: "ext_score",
+                        field: "EXT_Score",
                         title: "Extreme",
                         align: "center",
                         valign: "middle",
-                        width: "200",
+                        width: "80"
                     },
                     {
-                        field: "ext_rank",
+                        field: "EXT_FC",
+                        title: "FC",
+                        align: "center",
+                        valign: "middle",
+                        width: "50"
+                    },
+                    {
+                        field: "EXT_Rank",
                         title: "Ranking",
                         align: "center",
                         valign: "middle",
-                        width: "200",
+                        width: "50"
                     }
                 ],
-                height: "500",
+                height: "650",
                 search: true,
                 formatLoadingMessage: function () {
                     return "";

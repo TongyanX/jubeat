@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jubeat scores record website</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>
+</head>
+
+<body>
+    <div class="row" style="background-color: #C0C0C0">
+        <div class="col-md-8">
+            <h1 id="player"></h1>
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <br/>
+            <button type="button" class="btn btn-default" onclick="switchPage()">查看</button>
+        </div>
+    </div>
+    <div>
+        <table id="score_table"></table>
+    </div>
+
+<script>
+    var score_table = $("#score_table");
+    uid = window.location.href.split("/player/summary/?uid=")[1];
+    $.ajax({
+        url: "/u_check/",
+        type: "get",
+        data: "uid=" + uid,
+        dataType: "text",
+        success: function(callback) {
+            $("#player").html(callback);
+            score_table.bootstrapTable( {
+                url: "/summary/?uid=" + uid,
+                method: "get",
+                dataType: "json",
+                columns: [
+                {
+                    field: "Level",
+                    title: "Level",
+                    align: "center",
+                    valign: "middle",
+                    width: "50",
+                },
+                {
+                    field: "NP",
+                    title: "NP",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "E",
+                    title: "E",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "D",
+                    title: "D",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "C",
+                    title: "C",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "B",
+                    title: "B",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "A",
+                    title: "A",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "S",
+                    title: "S",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "SS",
+                    title: "SS",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "SSS",
+                    title: "SSS",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "EXC",
+                    title: "EXC",
+                    align: "center",
+                    valign: "middle",
+                    width: "50"
+                },
+                {
+                    field: "Average",
+                    title: "Average",
+                    align: "center",
+                    valign: "middle",
+                    width: "80"
+                }
+                ],
+                height: "650",
+                search: true,
+                formatLoadingMessage: function () {
+                    return "";
+                },
+            });
+        }
+    });
+
+    function switchPage() {
+        window.location.href="/player/detail/?uid="+uid;
+    };
+</script>
+</body>
+
+</html>

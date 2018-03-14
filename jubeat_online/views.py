@@ -12,3 +12,11 @@ def home(request):
 
 def song(request):
     return render(request, "song.html")
+
+
+def player_detail(request):
+    return render(request, "player_detail.html")
+
+
+def player_summary(request):
+    return render(request, "player_summary.html")
