@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0078cf0-fdb6-4cca-a337-58da337b15d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jubeat_online/templates/player_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jubeat_online/templates/player_summary.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/getTuneID.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jubeat_online/DatabaseCommands.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/太一/MusicScores.sqlite" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/jubeat_online/FileLoader.py" afterPath="$PROJECT_DIR$/jubeat_online/requests.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/jubeat_online/Scores.py" afterPath="$PROJECT_DIR$/jubeat_online/keyOperations.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/PHOELIUS/MusicScores.sqlite-wal" afterPath="$PROJECT_DIR$/test/PHOELIUS/MusicScores.sqlite-wal" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/para/MusicScores.sqlite" afterPath="$PROJECT_DIR$/test/para/MusicScores.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/para/MusicScores.sqlite-shm" afterPath="$PROJECT_DIR$/test/para/MusicScores.sqlite-shm" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/templates/home.html" afterPath="$PROJECT_DIR$/jubeat_online/templates/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/keyOperations.py" afterPath="$PROJECT_DIR$/jubeat_online/keyOperations.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/templates/song.html" afterPath="$PROJECT_DIR$/jubeat_online/templates/song.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/urls.py" afterPath="$PROJECT_DIR$/jubeat_online/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/views.py" afterPath="$PROJECT_DIR$/jubeat_online/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,8 +18,8 @@
       <file leaf-file-name="requests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jubeat_online/requests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+            <state relative-caret-position="598">
+              <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -52,8 +40,8 @@
       <file leaf-file-name="keyOperations.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jubeat_online/keyOperations.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="336" column="40" lean-forward="true" selection-start-line="336" selection-start-column="40" selection-end-line="336" selection-end-column="40" />
+            <state relative-caret-position="143">
+              <caret line="165" column="46" lean-forward="true" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="46" />
               <folding>
                 <element signature="e#51#78#0" expanded="true" />
               </folding>
@@ -61,23 +49,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="song.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="song.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jubeat_online/templates/song.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="54" column="39" lean-forward="true" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+            <state relative-caret-position="129">
+              <caret line="79" column="25" lean-forward="true" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jubeat_online/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
               <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_summary.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="517">
+              <caret line="57" column="33" lean-forward="false" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -140,11 +139,11 @@
         <option value="$PROJECT_DIR$/jubeat_online/tests.py" />
         <option value="$PROJECT_DIR$/jubeat_online/urls.py" />
         <option value="$PROJECT_DIR$/jubeat_online/templates/player_detail.html" />
-        <option value="$PROJECT_DIR$/jubeat_online/templates/player_summary.html" />
         <option value="$PROJECT_DIR$/jubeat_online/requests.py" />
         <option value="$PROJECT_DIR$/jubeat_online/templates/home.html" />
-        <option value="$PROJECT_DIR$/jubeat_online/keyOperations.py" />
+        <option value="$PROJECT_DIR$/jubeat_online/templates/player_summary.html" />
         <option value="$PROJECT_DIR$/jubeat_online/templates/song.html" />
+        <option value="$PROJECT_DIR$/jubeat_online/keyOperations.py" />
       </list>
     </option>
   </component>
@@ -327,6 +326,21 @@
       <option name="presentableId" value="Default" />
       <updated>1517940809134</updated>
     </task>
+    <task id="LOCAL-00001" summary="Rewrite original code">
+      <created>1521001918909</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1521001918909</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixed Uploading Error;&#10;Tried DataTables.">
+      <created>1521004662340</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1521004662340</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -364,6 +378,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Rewrite original code" />
+    <MESSAGE value="Fixed Uploading Error;&#10;Tried DataTables." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Uploading Error;&#10;Tried DataTables." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -403,7 +422,7 @@
         <state relative-caret-position="1305">
           <caret line="87" column="33" lean-forward="false" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -413,8 +432,8 @@
         <state relative-caret-position="2115">
           <caret line="141" column="56" lean-forward="false" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="56" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -443,6 +462,7 @@
           <caret line="19" column="30" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="19" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -488,7 +508,7 @@
         <state relative-caret-position="1305">
           <caret line="87" column="33" lean-forward="false" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -498,8 +518,8 @@
         <state relative-caret-position="2115">
           <caret line="141" column="56" lean-forward="false" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="56" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -528,6 +548,7 @@
           <caret line="19" column="30" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="19" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -631,23 +652,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="141" column="53" lean-forward="false" selection-start-line="141" selection-start-column="53" selection-end-line="141" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jubeat_online/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
           <caret line="85" column="29" lean-forward="true" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -660,20 +670,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/keyOperations.py">
+    <entry file="file://$PROJECT_DIR$/jubeat_online/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="336" column="40" lean-forward="true" selection-start-line="336" selection-start-column="40" selection-end-line="336" selection-end-column="40" />
-          <folding>
-            <element signature="e#51#78#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="57" column="33" lean-forward="false" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jubeat_online/requests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+        <state relative-caret-position="598">
+          <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>
@@ -688,21 +704,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/song.html">
+    <entry file="file://$PROJECT_DIR$/jubeat_online/keyOperations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="54" column="39" lean-forward="true" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+        <state relative-caret-position="143">
+          <caret line="165" column="46" lean-forward="true" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="46" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#51#78#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/views.py">
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/song.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="129">
+          <caret line="79" column="25" lean-forward="true" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

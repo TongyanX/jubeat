@@ -8,44 +8,31 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">-->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>
+    <!--<script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>-->
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
     <div class="row" style="background-color: #C0C0C0">
-        <div class="col-md-8">
-            <h2 id="title"></h2>
-            <h3 id="artist"></h3>
-        </div>
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-1">
-            <p></p>
-            <h4 id="bas"></h4>
-            <h4 id="adv"></h4>
-            <h4 id="ext"></h4>
-        </div>
-        <div class="col-md-2">
-            <p></p>
-            <h4 id="bas_level"></h4>
-            <h4 id="adv_level"></h4>
-            <h4 id="ext_level"></h4>
+        <div class="col-md-12">
+            <h3 id="title"></h3>
+            <h4 id="artist"></h4>
+            <h4 id="level"></h4>
         </div>
     </div>
 
     <p></p>
 
     <div>
-        <table id="score_table">
+        <table id="score_table" class="display cell-border">
             <thead style="background-color: #C0C0C0">
                 <tr>
-                    <th>Player</th>
+                    <th></th>
                     <th>PC</th>
                     <th>BASIC</th>
                     <th>FC</th>
@@ -86,12 +73,9 @@
         success: function(callback) {
             $("#title").html(callback.Title);
             $("#artist").html(callback.Artist);
-            $("#bas").html("BASIC");
-            $("#adv").html("ADVANCED");
-            $("#ext").html("EXTREME");
-            $("#bas_level").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLEVEL " + callback.BAS_Level);
-            $("#adv_level").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLEVEL " + callback.ADV_Level);
-            $("#ext_level").html("&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLEVEL " + callback.EXT_Level);
+            $("#level").html("BASIC Lv " + callback.BAS_Level + "&nbsp&nbsp|&nbsp&nbsp" +
+                             "ADVANCED Lv " + callback.ADV_Level + "&nbsp&nbsp|&nbsp&nbsp" +
+                             "EXTREME Lv " + callback.EXT_Level);
             var score_table = $("#score_table");
             score_table.DataTable( {
                 ajax: {
@@ -99,18 +83,59 @@
                     dataSrc: ""
                 },
                 columns: [
-                    {data: "PID"},
-                    {data: "Play_Count"},
-                    {data: "BAS_Score"},
-                    {data: "BAS_FC"},
-                    {data: "BAS_Rank"},
-                    {data: "ADV_Score"},
-                    {data: "ADV_FC"},
-                    {data: "ADV_Rank"},
-                    {data: "EXT_Score"},
-                    {data: "EXT_FC"},
-                    {data: "EXT_Rank"}
-                ]
+                    {
+                        data: function (value, type, row) {
+                            return "<a href=/player/detail/?uid=" + value.UID + ">" + value.PID + "</a>";
+                        },
+                        className: "dt-head-center dt-body-center",
+                        title: "Player"
+                    },
+                    {data: "Play_Count", className: "dt-head-center dt-body-center"},
+                    {data: "BAS_Score", className: "dt-head-center dt-body-center"},
+                    {data: "BAS_FC", className: "dt-head-center dt-body-center"},
+                    {data: "BAS_Rank", className: "dt-head-center dt-body-center"},
+                    {data: "ADV_Score", className: "dt-head-center dt-body-center"},
+                    {data: "ADV_FC", className: "dt-head-center dt-body-center"},
+                    {data: "ADV_Rank", className: "dt-head-center dt-body-center"},
+                    {data: "EXT_Score", className: "dt-head-center dt-body-center"},
+                    {data: "EXT_FC", className: "dt-head-center dt-body-center"},
+                    {data: "EXT_Rank", className: "dt-head-center dt-body-center"}
+                ],
+                columnDefs: [
+                    {
+                        targets: [2, 5, 8],
+                        render : function ( data, type, row ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                var statusText= "";
+                                if(data == -1){
+                                    statusText = "--";
+                                }
+                                else {
+                                    statusText = data;
+                                };
+                                return "<span>" + statusText + "<\span>";
+                            }
+                            return data;
+                        }
+                    },
+                    {
+                        targets: [4, 7, 10],
+                        render : function ( data, type, row ) {
+                            if ( type === 'display' || type === 'filter' ) {
+                                var statusText= "";
+                                if(data == 100000){
+                                    statusText = "--";
+                                }
+                                else {
+                                    statusText = data;
+                                };
+                                return "<span>" + statusText + "<\span>";
+                            }
+                            return data;
+                        }
+                    }
+                ],
+                scrollY: 480
             });
             <!--score_table.bootstrapTable( {-->
                 <!--url: "/song/scores/?sid=" + callback.SID,-->
