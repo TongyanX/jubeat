@@ -95,13 +95,13 @@ class Player(object):
         if not os.path.isdir(accessory_dir):
             os.mkdir(accessory_dir)
 
-        upload_file = "{}{}.sqlite".format(accessory_dir, self.pid)
+        upload_file = "%s%s.sqlite" % (accessory_dir, self.pid)
         with open(upload_file, "wb") as new_file:
             for chunk in self.file.chunks():
                 new_file.write(chunk)
 
         if self.wal is not None:
-            wal_file = "{}{}.sqlite-wal".format(accessory_dir, self.pid)
+            wal_file = "%s%s.sqlite-wal" % (accessory_dir, self.pid)
             new_wal_file = open(wal_file, "wb")
             for chunk in self.wal.chunks():
                 new_wal_file.write(chunk)
@@ -140,7 +140,7 @@ class Player(object):
         try:
             score_list = self.get_scores()
         except Exception:
-            os.remove("{}{}.sqlite".format(settings.BASE_DIR + settings.ACCESSORY_DIR, self.pid))
+            os.remove("%s%s.sqlite" % (settings.BASE_DIR + settings.ACCESSORY_DIR, self.pid))
             return False
 
         statement = "CREATE TABLE IF NOT EXISTS {}(" \
@@ -173,10 +173,8 @@ class Player(object):
                 self.cursor.execute(statement % (song.bas, song.adv, song.ext, song.fc_bas,
                                                  song.fc_adv, song.fc_ext, song.pc, song.id))
         self.conn.commit()
+        os.remove("%s%s.sqlite" % (settings.BASE_DIR + settings.ACCESSORY_DIR, self.pid))
 
-        os.remove("{}{}.sqlite".format(settings.BASE_DIR + settings.ACCESSORY_DIR, self.pid))
-        # if self.wal is not None:
-        #     os.remove("%s%s.sqlite-wal" % (settings.BASE_DIR + settings.ACCESSORY_DIR, self.pid))
         return True
 
     def get_from_database(self):
@@ -257,6 +255,7 @@ class Player(object):
             if "NP" not in level_dict:
                 level_dict["NP"] = 0
             level_dict["NP"] += whole_level_dict[level] - len(rating_list)
+            level_dict["Total"] = whole_level_dict[level]
 
             level_list.append(level_dict)
 
@@ -425,7 +424,6 @@ class Songs(object):
                     output_dict["BAS_Rank"] = bas_rank[output_dict["BAS_Score"]]
                     output_dict["ADV_Rank"] = adv_rank[output_dict["ADV_Score"]]
                     output_dict["EXT_Rank"] = ext_rank[output_dict["EXT_Score"]]
-                print(output_list)
                 return json.dumps(output_list)
 
 
