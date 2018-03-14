@@ -8,11 +8,13 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>
+    <!--<script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>-->
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -25,13 +27,44 @@
             <button type="button" class="btn btn-default" onclick="switchPage()">查看</button>
         </div>
     </div>
+
+    <p></p>
+
     <div>
-        <table id="score_table"></table>
+        <table id="score_table" class="display cell-border" style="width:100%">
+            <thead style="background-color: #C0C0C0"></thead>
+        </table>
     </div>
 
 <script>
     var score_table = $("#score_table");
     uid = window.location.href.split("/player/summary/?uid=")[1];
+
+    $.fn.dataTable.ext.type.order["count-asc"] = function (x, y) {
+        if (x == ""){
+
+            return 1;
+        }
+        else if (y == ""){
+            return -1;
+        }
+        else{
+            return x - y;
+        };
+    };
+
+    $.fn.dataTable.ext.type.order["count-desc"] = function (x, y) {
+        if (x == ""){
+            return 1;
+        }
+        else if (y == ""){
+            return -1;
+        }
+        else{
+            return y - x;
+        };
+    };
+
     $.ajax({
         url: "/u_check/",
         type: "get",
@@ -39,109 +72,198 @@
         dataType: "text",
         success: function(callback) {
             $("#player").html(callback);
-            score_table.bootstrapTable( {
-                url: "/summary/?uid=" + uid,
-                method: "get",
-                dataType: "json",
+
+            score_table.DataTable( {
+                ajax: {
+                    url: "/summary/?uid=" + uid,
+                    dataSrc: ""
+                },
                 columns: [
-                {
-                    field: "Level",
-                    title: "Level",
-                    align: "center",
-                    valign: "middle",
-                    width: "50",
-                },
-                {
-                    field: "Total",
-                    title: "Total",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "NP",
-                    title: "NP",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "E",
-                    title: "E",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "D",
-                    title: "D",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "C",
-                    title: "C",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "B",
-                    title: "B",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "A",
-                    title: "A",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "S",
-                    title: "S",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "SS",
-                    title: "SS",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "SSS",
-                    title: "SSS",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "EXC",
-                    title: "EXC",
-                    align: "center",
-                    valign: "middle",
-                    width: "50"
-                },
-                {
-                    field: "Average",
-                    title: "Average",
-                    align: "center",
-                    valign: "middle",
-                    width: "80"
-                }
+                    {
+                        data: "Level",
+                        title: "Level",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "Total",
+                        title: "Total",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "NP",
+                        title: "NP",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "E",
+                        title: "E",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "D",
+                        title: "D",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "C",
+                        title: "C",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "B",
+                        title: "B",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "A",
+                        title: "A",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "S",
+                        title: "S",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "SS",
+                        title: "SS",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "SSS",
+                        title: "SSS",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "EXC",
+                        title: "EXC",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "Average",
+                        title: "Average",
+                        className: "dt-head-center dt-body-center"
+                    }
                 ],
-                height: "650",
-                search: true,
-                formatLoadingMessage: function () {
-                    return "";
-                },
+                columnDefs: [
+                    { targets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], type: "count" }
+                ],
+                paging: false
             });
+
+            <!--score_table.bootstrapTable( {-->
+                <!--url: "/summary/?uid=" + uid,-->
+                <!--method: "get",-->
+                <!--dataType: "json",-->
+                <!--columns: [-->
+                <!--{-->
+                    <!--field: "Level",-->
+                    <!--title: "Level",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50",-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "Total",-->
+                    <!--title: "Total",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "NP",-->
+                    <!--title: "NP",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "E",-->
+                    <!--title: "E",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "D",-->
+                    <!--title: "D",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "C",-->
+                    <!--title: "C",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "B",-->
+                    <!--title: "B",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "A",-->
+                    <!--title: "A",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "S",-->
+                    <!--title: "S",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "SS",-->
+                    <!--title: "SS",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "SSS",-->
+                    <!--title: "SSS",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "EXC",-->
+                    <!--title: "EXC",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "Average",-->
+                    <!--title: "Average",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "80"-->
+                <!--}-->
+                <!--],-->
+                <!--height: "650",-->
+                <!--search: true,-->
+                <!--formatLoadingMessage: function () {-->
+                    <!--return "";-->
+                <!--},-->
+            <!--});-->
         }
     });
 

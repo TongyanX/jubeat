@@ -6,8 +6,6 @@ from MySQLdb import connect as m_con
 import os
 import json
 
-max_size = 100000
-
 
 class SongScores(object):
     """Song scores."""
@@ -256,7 +254,8 @@ class Player(object):
 
             if "NP" not in level_dict:
                 level_dict["NP"] = 0
-            level_dict["NP"] += whole_level_dict[level] - len(rating_list)
+            if whole_level_dict[level] != len(rating_list):
+                level_dict["NP"] += whole_level_dict[level] - len(rating_list)
             level_dict["Total"] = whole_level_dict[level]
 
             level_list.append(level_dict)
@@ -363,12 +362,12 @@ class Songs(object):
         """Calculate ranking."""
         i = 0
         while i < len(score_list):
-            if score_list[i] == -1:
+            if score_list[i] == "--":
                 del score_list[i]
             else:
                 i += 1
         if len(score_list) == 0:
-            return {-1: max_size}
+            return {"--": "--"}
 
         score_list.sort(reverse=True)
 
@@ -384,7 +383,7 @@ class Songs(object):
                 i += 1
 
         ranking_dict = dict(zip(score_list, rank))
-        ranking_dict[-1] = max_size
+        ranking_dict["--"] = "--"
         return ranking_dict
 
     def get_song_scores(self, sid):
@@ -407,7 +406,7 @@ class Songs(object):
                 if song_scores is None:
                     continue
                 else:
-                    song_scores = [song_scores[0]] + list(song_scores[1: 4]) + \
+                    song_scores = [song_scores[0]] + list(map(empty_score, song_scores[1: 4])) + \
                                   list(map(fc_or_not, song_scores[4: 7])) + [song_scores[7]]
                     output_dict = dict(zip(["SID", "BAS_Score", "ADV_Score", "EXT_Score",
                                             "BAS_FC", "ADV_FC", "EXT_FC", "Play_Count"], song_scores))
