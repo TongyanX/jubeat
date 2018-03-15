@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.http import HttpResponse
 from .keyOperations import Player, Songs, ID
+from .skillPoint import SkillPoint
 import json
 
 
@@ -76,3 +77,10 @@ def get_total_pc(request):
     player_obj = Player(user_id=uid)
     score_list = json.loads(player_obj.get_from_database())
     return HttpResponse(sum([data["Play_Count"] for data in score_list]))
+
+
+def get_skp(request):
+    """Get all scores of a player."""
+    uid = request.GET["uid"]
+    skp_obj = SkillPoint()
+    return HttpResponse(skp_obj.get_skp_result(uid))

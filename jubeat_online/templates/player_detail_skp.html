@@ -25,7 +25,7 @@
         <div class="col-md-4" style="text-align: right">
             <br/>
             <button type="button" class="btn btn-default" onclick="switchPage_sum()">Summary</button>
-            <button type="button" class="btn btn-default" onclick="switchPage_skp()">SKP Mode</button>
+            <button type="button" class="btn btn-default" onclick="switchPage_norm()">Normal Mode</button>
             <button type="button" class="btn btn-default" onclick="switchPage_home()">Home</button>
         </div>
     </div>
@@ -38,21 +38,23 @@
                 <tr>
                     <th rowspan="2" style="text-align: center">Title</th>
                     <th rowspan="2" style="text-align: center">Artist</th>
-                    <th rowspan="2" style="text-align: center">PC</th>
-                    <th colspan="3" style="text-align: center">BASIC</th>
-                    <th colspan="3" style="text-align: center">ADVANCED</th>
-                    <th colspan="3" style="text-align: center">EXTREME</th>
+                    <th colspan="4" style="text-align: center">Chart Info</th>
+                    <th colspan="3" style="text-align: center">Performance</th>
+                    <th colspan="2" style="text-align: center">SKP</th>
+                    <th colspan="2" style="text-align: center">Ranking</th>
                 </tr>
                 <tr>
-                    <th style="text-align: center">Lv</th>
+                    <th style="text-align: center">DIFF</th>
+                    <th style="text-align: center">Note</th>
+                    <th style="text-align: center">Mac Lv</th>
+                    <th style="text-align: center">Mic Lv</th>
                     <th style="text-align: center">Score</th>
                     <th style="text-align: center">FC</th>
-                    <th style="text-align: center">Lv</th>
+                    <th style="text-align: center">gr</th>
+                    <th style="text-align: center">Player</th>
+                    <th style="text-align: center">Max</th>
                     <th style="text-align: center">Score</th>
-                    <th style="text-align: center">FC</th>
-                    <th style="text-align: center">Lv</th>
-                    <th style="text-align: center">Score</th>
-                    <th style="text-align: center">FC</th>
+                    <th style="text-align: center">SKP</th>
                 </tr>
             </thead>
         </table>
@@ -60,7 +62,48 @@
 
 <script>
     var score_table = $("#score_table");
-    uid = window.location.href.split("/player/detail/?uid=")[1];
+    uid = window.location.href.split("/player/detail/skp/?uid=")[1];
+
+    $.fn.dataTable.ext.type.order["diff-pre"] = function (x) {
+        switch(x) {
+            case "BAS": return 1;
+            case "ADV": return 2;
+            case "EXT": return 3;
+        };
+    };
+
+    $.fn.dataTable.ext.type.order["mic-pre"] = function (x) {
+        switch(x) {
+            case "Low": return 1;
+            case "Mid": return 2;
+            case "High": return 3;
+        };
+    };
+
+    $.fn.dataTable.ext.type.order["ranking-asc"] = function (x, y) {
+        if (x == "--"){
+
+            return 1;
+        }
+        else if (y == "--"){
+            return -1;
+        }
+        else{
+            return x - y;
+        };
+    };
+
+    $.fn.dataTable.ext.type.order["ranking-desc"] = function (x, y) {
+        if (x == "--"){
+            return 1;
+        }
+        else if (y == "--"){
+            return -1;
+        }
+        else{
+            return y - x;
+        };
+    };
 
     $.fn.dataTable.ext.type.order["score-asc"] = function (x, y) {
         if (x == "--"){
@@ -87,21 +130,6 @@
         };
     };
 
-    $.fn.dataTable.ext.type.order["level-pre"] = function (x) {
-        switch(x) {
-            case "Lv1": return 1;
-            case "Lv2": return 2;
-            case "Lv3": return 3;
-            case "Lv4": return 4;
-            case "Lv5": return 5;
-            case "Lv6": return 6;
-            case "Lv7": return 7;
-            case "Lv8": return 8;
-            case "Lv9": return 9;
-            case "Lv10": return 10;
-        };
-    };
-
     $.ajax({
         url: "/u_check/",
         type: "get",
@@ -122,7 +150,7 @@
 
             score_table.DataTable( {
                 ajax: {
-                    url: "/scores/?uid=" + uid,
+                    url: "/skp/?uid=" + uid,
                     dataSrc: ""
                 },
                 columns: [
@@ -130,61 +158,92 @@
                         data: function (value, type, row) {
                             return "<a href=/song/?sid=" + value.SID + ">" + value.Title + "</a>";
                         },
-                        width: "25%",
+                        width: "22%",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "Artist",
-                        width: "25%",
+                        width: "22%",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "Play_Count",
+                        data: "Difficulty",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "BAS_Level",
+                        data: "Note",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "BAS_Score",
+                        data: "MAC_Level",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "BAS_FC",
+                        data: "MIC_Level",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "ADV_Level",
+                        data: "Score",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "ADV_Score",
+                        data: "FC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "ADV_FC",
+                        data: "GR",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "EXT_Level",
+                        data: "SKP",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "EXT_Score",
+                        data: "MAX_SKP",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "EXT_FC",
+                        data: "Score_Rank",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "SKP_Rank",
                         className: "dt-head-center dt-body-center"
                     }
                 ],
                 columnDefs: [
-                    { targets: [4, 7, 10], type: "score" },
-                    { targets: [3, 6, 9], type: "level" },
-                    { targets: 5, orderData: [5, 4] },
-                    { targets: 8, orderData: [8, 7] },
-                    { targets: 11, orderData: [11, 10] }
+                    { targets: [6, 8, 9], type: "score" },
+                    { targets: [11, 12], type: "ranking" },
+                    { targets: [2], type: "diff" },
+                    { targets: [5], type: "mic" },
+                    { targets: 7, orderData: [7, 6] },
+                    {
+                        targets: [4, 9, 10],
+                        render: function(data, type, row) {
+                            data = data.toString();
+                            if (data.lastIndexOf(".") == -1) {
+                                return data + ".00";
+                            }
+                            else if (data.lastIndexOf(".") == data.length - 2) {
+                                return data + "0";
+                            }
+                            else {
+                                return data;
+                            };
+                        }
+                    },
+                    {
+                        targets: [8],
+                        render: function(data, type, row) {
+                            data = data.toString();
+                            if (data.lastIndexOf(".") == -1) {
+                                return data + ".0";
+                            }
+                            else {
+                                return data;
+                            };
+                        }
+                    }
                 ],
                 pageLength: 50,
                 lengthMenu: [[20, 50, 100, 200, -1], [20, 50, 100, 200, "ALL"]],
@@ -293,8 +352,8 @@
         }
     });
 
-    function switchPage_skp() {
-        window.location.href="/player/detail/skp/?uid="+uid;
+    function switchPage_norm() {
+        window.location.href="/player/detail/?uid="+uid;
     };
 
     function switchPage_sum() {

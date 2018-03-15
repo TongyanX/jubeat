@@ -20,3 +20,11 @@ def player_detail(request):
 
 def player_summary(request):
     return render(request, "player_summary.html")
+
+
+def player_detail_skp(request):
+    return render(request, "player_detail_skp.html")
+
+
+def player_summary_skp(request):
+    return render(request, "player_summary_skp.html")

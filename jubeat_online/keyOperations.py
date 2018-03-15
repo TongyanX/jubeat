@@ -29,6 +29,35 @@ def add_lv(lv):
     return "Lv" + str(lv)
 
 
+def ranking(score_list):
+    """Calculate ranking."""
+    i = 0
+    while i < len(score_list):
+        if score_list[i] == "--":
+            del score_list[i]
+        else:
+            i += 1
+    if len(score_list) == 0:
+        return {"--": "--"}
+
+    score_list.sort(reverse=True)
+
+    i = 1
+    rank = [1]
+    rank_iterator = 1
+    while i < len(score_list):
+        rank_iterator += 1
+        if score_list[i] == score_list[i - 1]:
+            del score_list[i]
+        else:
+            rank.append(rank_iterator)
+            i += 1
+
+    ranking_dict = dict(zip(score_list, rank))
+    ranking_dict["--"] = "--"
+    return ranking_dict
+
+
 class Player(object):
     """Score-related operations."""
     def __init__(self, scores_file=None, wal_file=None, player_id=None, user_id=None):
@@ -323,35 +352,6 @@ class Songs(object):
             level_dict[song[5]].append(dict(SID=song[0], Title=song[1], Artist=song[2], Difficulty="EXT"))
         return level_dict
 
-    @staticmethod
-    def ranking(score_list):
-        """Calculate ranking."""
-        i = 0
-        while i < len(score_list):
-            if score_list[i] == "--":
-                del score_list[i]
-            else:
-                i += 1
-        if len(score_list) == 0:
-            return {"--": "--"}
-
-        score_list.sort(reverse=True)
-
-        i = 1
-        rank = [1]
-        rank_iterator = 1
-        while i < len(score_list):
-            rank_iterator += 1
-            if score_list[i] == score_list[i - 1]:
-                del score_list[i]
-            else:
-                rank.append(rank_iterator)
-                i += 1
-
-        ranking_dict = dict(zip(score_list, rank))
-        ranking_dict["--"] = "--"
-        return ranking_dict
-
     def get_song_scores(self, sid):
         """Get song scores."""
         statement = "SELECT * FROM ID"
@@ -382,11 +382,11 @@ class Songs(object):
                 return None
             else:
                 bas_list = [output_dict["BAS_Score"] for output_dict in output_list]
-                bas_rank = self.ranking(bas_list)
+                bas_rank = ranking(bas_list)
                 adv_list = [output_dict["ADV_Score"] for output_dict in output_list]
-                adv_rank = self.ranking(adv_list)
+                adv_rank = ranking(adv_list)
                 ext_list = [output_dict["EXT_Score"] for output_dict in output_list]
-                ext_rank = self.ranking(ext_list)
+                ext_rank = ranking(ext_list)
                 for output_dict in output_list:
                     output_dict["BAS_Rank"] = bas_rank[output_dict["BAS_Score"]]
                     output_dict["ADV_Rank"] = adv_rank[output_dict["ADV_Score"]]

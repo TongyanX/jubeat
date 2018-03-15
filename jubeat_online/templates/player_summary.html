@@ -24,7 +24,9 @@
         </div>
         <div class="col-md-4" style="text-align: right">
             <br/>
-            <button type="button" class="btn btn-default" onclick="switchPage()">查看</button>
+            <button type="button" class="btn btn-default" onclick="switchPage_det()">Detail</button>
+            <button type="button" class="btn btn-default" onclick="switchPage_skp()">SKP Mode</button>
+            <button type="button" class="btn btn-default" onclick="switchPage_home()">Home</button>
         </div>
     </div>
 
@@ -116,61 +118,61 @@
                     {
                         data: "NP",
                         title: "NP",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "E",
                         title: "E",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "D",
                         title: "D",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "C",
                         title: "C",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "B",
                         title: "B",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "A",
                         title: "A",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "S",
                         title: "S",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "SS",
                         title: "SS",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "SSS",
                         title: "SSS",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "EXC",
                         title: "EXC",
-                        defaultContent: "",
+                        defaultContent: "--",
                         className: "dt-head-center dt-body-center"
                     },
                     {
@@ -186,7 +188,7 @@
                         targets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
                         render: function(data, type, row) {
                             if (data == 0) {
-                                return "";
+                                return "--";
                             }
                             else {
                                  return data;
@@ -303,8 +305,16 @@
         }
     });
 
-    function switchPage() {
+    function switchPage_skp() {
+        window.location.href="/player/detail/skp/?uid="+uid;
+    };
+
+    function switchPage_det() {
         window.location.href="/player/detail/?uid="+uid;
+    };
+
+    function switchPage_home() {
+        window.location.href="/home";
     };
 </script>
 </body>

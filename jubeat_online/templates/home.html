@@ -72,6 +72,8 @@
                 }
                 else if(callback == "OK") {
                     alert("上传成功");
+                    $("#player_id_view").val(id);
+                    viewScore();
                 }
                 else if(callback == "WRONG"){
                     alert("文件错误");

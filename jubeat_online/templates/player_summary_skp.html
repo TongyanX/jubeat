@@ -24,8 +24,7 @@
         </div>
         <div class="col-md-4" style="text-align: right">
             <br/>
-            <button type="button" class="btn btn-default" onclick="switchPage_sum()">Summary</button>
-            <button type="button" class="btn btn-default" onclick="switchPage_skp()">SKP Mode</button>
+            <button type="button" class="btn btn-default" onclick="switchPage_det()">Detail</button>
             <button type="button" class="btn btn-default" onclick="switchPage_home()">Home</button>
         </div>
     </div>
@@ -33,41 +32,20 @@
     <p></p>
 
     <div>
-        <table id="score_table" class="stripe hover row-border cell-border compact">
-            <thead style="background-color: #C0C0C0">
-                <tr>
-                    <th rowspan="2" style="text-align: center">Title</th>
-                    <th rowspan="2" style="text-align: center">Artist</th>
-                    <th rowspan="2" style="text-align: center">PC</th>
-                    <th colspan="3" style="text-align: center">BASIC</th>
-                    <th colspan="3" style="text-align: center">ADVANCED</th>
-                    <th colspan="3" style="text-align: center">EXTREME</th>
-                </tr>
-                <tr>
-                    <th style="text-align: center">Lv</th>
-                    <th style="text-align: center">Score</th>
-                    <th style="text-align: center">FC</th>
-                    <th style="text-align: center">Lv</th>
-                    <th style="text-align: center">Score</th>
-                    <th style="text-align: center">FC</th>
-                    <th style="text-align: center">Lv</th>
-                    <th style="text-align: center">Score</th>
-                    <th style="text-align: center">FC</th>
-                </tr>
-            </thead>
+        <table id="score_table" class="display cell-border compact" style="width:100%">
+            <thead style="background-color: #C0C0C0"></thead>
         </table>
     </div>
 
 <script>
     var score_table = $("#score_table");
-    uid = window.location.href.split("/player/detail/?uid=")[1];
+    uid = window.location.href.split("/player/summary/?uid=")[1];
 
-    $.fn.dataTable.ext.type.order["score-asc"] = function (x, y) {
-        if (x == "--"){
-
+    $.fn.dataTable.ext.type.order["level-asc"] = function (x, y) {
+        if (x == "Total"){
             return 1;
         }
-        else if (y == "--"){
+        else if (y == "Total"){
             return -1;
         }
         else{
@@ -75,11 +53,11 @@
         };
     };
 
-    $.fn.dataTable.ext.type.order["score-desc"] = function (x, y) {
-        if (x == "--"){
+    $.fn.dataTable.ext.type.order["level-desc"] = function (x, y) {
+        if (x == "Total"){
             return 1;
         }
-        else if (y == "--"){
+        else if (y == "Total"){
             return -1;
         }
         else{
@@ -87,18 +65,28 @@
         };
     };
 
-    $.fn.dataTable.ext.type.order["level-pre"] = function (x) {
-        switch(x) {
-            case "Lv1": return 1;
-            case "Lv2": return 2;
-            case "Lv3": return 3;
-            case "Lv4": return 4;
-            case "Lv5": return 5;
-            case "Lv6": return 6;
-            case "Lv7": return 7;
-            case "Lv8": return 8;
-            case "Lv9": return 9;
-            case "Lv10": return 10;
+    $.fn.dataTable.ext.type.order["count-asc"] = function (x, y) {
+        if (x == ""){
+
+            return 1;
+        }
+        else if (y == ""){
+            return -1;
+        }
+        else{
+            return x - y;
+        };
+    };
+
+    $.fn.dataTable.ext.type.order["count-desc"] = function (x, y) {
+        if (x == ""){
+            return 1;
+        }
+        else if (y == ""){
+            return -1;
+        }
+        else{
+            return y - x;
         };
     };
 
@@ -108,180 +96,203 @@
         data: "uid=" + uid,
         dataType: "text",
         success: function(callback) {
-            var pid = callback;
-
-            $.ajax({
-                url: "/pc/",
-                type: "get",
-                data: "uid=" + uid,
-                dataType: "text",
-                success: function(callback) {
-                    $("#player").html(pid + "&nbsp&nbsp&nbsp&nbsp[Total Play Count: " + callback + "]");
-                }
-            });
+            $("#player").html(callback);
 
             score_table.DataTable( {
                 ajax: {
-                    url: "/scores/?uid=" + uid,
+                    url: "/summary/?uid=" + uid,
                     dataSrc: ""
                 },
                 columns: [
                     {
-                        data: function (value, type, row) {
-                            return "<a href=/song/?sid=" + value.SID + ">" + value.Title + "</a>";
-                        },
-                        width: "25%",
+                        data: "Level",
+                        title: "Level",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "Artist",
-                        width: "25%",
+                        data: "Total",
+                        title: "Total",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "Play_Count",
+                        data: "NP",
+                        title: "NP",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "BAS_Level",
+                        data: "E",
+                        title: "E",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "BAS_Score",
+                        data: "D",
+                        title: "D",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "BAS_FC",
+                        data: "C",
+                        title: "C",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "ADV_Level",
+                        data: "B",
+                        title: "B",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "ADV_Score",
+                        data: "A",
+                        title: "A",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "ADV_FC",
+                        data: "S",
+                        title: "S",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "EXT_Level",
+                        data: "SS",
+                        title: "SS",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "EXT_Score",
+                        data: "SSS",
+                        title: "SSS",
+                        defaultContent: "",
                         className: "dt-head-center dt-body-center"
                     },
                     {
-                        data: "EXT_FC",
+                        data: "EXC",
+                        title: "EXC",
+                        defaultContent: "",
+                        className: "dt-head-center dt-body-center"
+                    },
+                    {
+                        data: "Average",
+                        title: "Average",
                         className: "dt-head-center dt-body-center"
                     }
                 ],
                 columnDefs: [
-                    { targets: [4, 7, 10], type: "score" },
-                    { targets: [3, 6, 9], type: "level" },
-                    { targets: 5, orderData: [5, 4] },
-                    { targets: 8, orderData: [8, 7] },
-                    { targets: 11, orderData: [11, 10] }
+                    { targets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], type: "count" },
+                    { targets: [0], type: "level" },
+                    {
+                        targets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                        render: function(data, type, row) {
+                            if (data == 0) {
+                                return "";
+                            }
+                            else {
+                                 return data;
+                            };
+                        }
+                    }
                 ],
-                pageLength: 50,
-                lengthMenu: [[20, 50, 100, 200, -1], [20, 50, 100, 200, "ALL"]],
-                scrollY: 520
+                paging: false
             });
 
             <!--score_table.bootstrapTable( {-->
-                <!--url: "/scores/?uid=" + uid,-->
+                <!--url: "/summary/?uid=" + uid,-->
                 <!--method: "get",-->
                 <!--dataType: "json",-->
                 <!--columns: [-->
                 <!--{-->
-                    <!--field: "Title",-->
-                    <!--title: "Title",-->
-                    <!--align: "left",-->
+                    <!--field: "Level",-->
+                    <!--title: "Level",-->
+                    <!--align: "center",-->
                     <!--valign: "middle",-->
-                    <!--width: "200",-->
-                    <!--formatter: function(value, row, index){-->
-                        <!--return "<a href='/song/?sid=" + row.SID + "'>" + row.Title + "</a>";-->
-                    <!--}-->
+                    <!--width: "50",-->
                 <!--},-->
                 <!--{-->
-                    <!--field: "Artist",-->
-                    <!--title: "Artist",-->
-                    <!--align: "left",-->
-                    <!--valign: "middle",-->
-                    <!--width: "200"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "Play_Count",-->
-                    <!--title: "PC",-->
+                    <!--field: "Total",-->
+                    <!--title: "Total",-->
                     <!--align: "center",-->
                     <!--valign: "middle",-->
                     <!--width: "50"-->
                 <!--},-->
                 <!--{-->
-                    <!--field: "BAS_Level",-->
-                    <!--title: "BAS",-->
+                    <!--field: "NP",-->
+                    <!--title: "NP",-->
                     <!--align: "center",-->
                     <!--valign: "middle",-->
                     <!--width: "50"-->
                 <!--},-->
                 <!--{-->
-                    <!--field: "BAS_Score",-->
-                    <!--title: "Score",-->
+                    <!--field: "E",-->
+                    <!--title: "E",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "D",-->
+                    <!--title: "D",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "C",-->
+                    <!--title: "C",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "B",-->
+                    <!--title: "B",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "A",-->
+                    <!--title: "A",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "S",-->
+                    <!--title: "S",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "SS",-->
+                    <!--title: "SS",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "SSS",-->
+                    <!--title: "SSS",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "EXC",-->
+                    <!--title: "EXC",-->
+                    <!--align: "center",-->
+                    <!--valign: "middle",-->
+                    <!--width: "50"-->
+                <!--},-->
+                <!--{-->
+                    <!--field: "Average",-->
+                    <!--title: "Average",-->
                     <!--align: "center",-->
                     <!--valign: "middle",-->
                     <!--width: "80"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "BAS_FC",-->
-                    <!--title: "FC",-->
-                    <!--align: "center",-->
-                    <!--valign: "middle",-->
-                    <!--width: "50"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "ADV_Level",-->
-                    <!--title: "ADV",-->
-                    <!--align: "center",-->
-                    <!--valign: "middle",-->
-                    <!--width: "50"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "ADV_Score",-->
-                    <!--title: "Score",-->
-                    <!--align: "center",-->
-                    <!--valign: "middle",-->
-                    <!--width: "80"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "ADV_FC",-->
-                    <!--title: "FC",-->
-                    <!--align: "center",-->
-                    <!--valign: "middle",-->
-                    <!--width: "50"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "EXT_Level",-->
-                    <!--title: "EXT",-->
-                    <!--align: "center",-->
-                    <!--valign: "middle",-->
-                    <!--width: "50"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "EXT_Score",-->
-                    <!--title: "Score",-->
-                    <!--align: "center",-->
-                    <!--valign: "middle",-->
-                    <!--width: "80"-->
-                <!--},-->
-                <!--{-->
-                    <!--field: "EXT_FC",-->
-                    <!--title: "FC",-->
-                    <!--align: "center",-->
-                    <!--valign: "middle",-->
-                    <!--width: "50"-->
                 <!--}-->
                 <!--],-->
                 <!--height: "650",-->
@@ -293,12 +304,8 @@
         }
     });
 
-    function switchPage_skp() {
-        window.location.href="/player/detail/skp/?uid="+uid;
-    };
-
-    function switchPage_sum() {
-        window.location.href="/player/summary/?uid="+uid;
+    function switchPage_det() {
+        window.location.href="/player/detail/?uid="+uid;
     };
 
     function switchPage_home() {
