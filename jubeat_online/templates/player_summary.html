@@ -20,7 +20,7 @@
 <body>
     <div class="row" style="background-color: #C0C0C0">
         <div class="col-md-8">
-            <h1 id="player"></h1>
+            <h2 id="player"></h2>
         </div>
         <div class="col-md-4" style="text-align: right">
             <br/>
@@ -31,7 +31,7 @@
     <p></p>
 
     <div>
-        <table id="score_table" class="display cell-border" style="width:100%">
+        <table id="score_table" class="display cell-border compact" style="width:100%">
             <thead style="background-color: #C0C0C0"></thead>
         </table>
     </div>
@@ -39,6 +39,30 @@
 <script>
     var score_table = $("#score_table");
     uid = window.location.href.split("/player/summary/?uid=")[1];
+
+    $.fn.dataTable.ext.type.order["level-asc"] = function (x, y) {
+        if (x == "Total"){
+            return 1;
+        }
+        else if (y == "Total"){
+            return -1;
+        }
+        else{
+            return x - y;
+        };
+    };
+
+    $.fn.dataTable.ext.type.order["level-desc"] = function (x, y) {
+        if (x == "Total"){
+            return 1;
+        }
+        else if (y == "Total"){
+            return -1;
+        }
+        else{
+            return y - x;
+        };
+    };
 
     $.fn.dataTable.ext.type.order["count-asc"] = function (x, y) {
         if (x == ""){
@@ -156,7 +180,19 @@
                     }
                 ],
                 columnDefs: [
-                    { targets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], type: "count" }
+                    { targets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], type: "count" },
+                    { targets: [0], type: "level" },
+                    {
+                        targets: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                        render: function(data, type, row) {
+                            if (data == 0) {
+                                return "";
+                            }
+                            else {
+                                 return data;
+                            };
+                        }
+                    }
                 ],
                 paging: false
             });

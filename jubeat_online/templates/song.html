@@ -30,8 +30,27 @@
     <p></p>
 
     <div>
-        <table id="score_table" class="display cell-border">
-            <thead style="background-color: #C0C0C0"></thead>
+        <table id="score_table" class="display cell-border compact">
+            <thead style="background-color: #C0C0C0">
+                <tr>
+                    <th rowspan="2" style="text-align: center">Player</th>
+                    <th rowspan="2" style="text-align: center">PC</th>
+                    <th colspan="3" style="text-align: center">BASIC</th>
+                    <th colspan="3" style="text-align: center">ADVANCED</th>
+                    <th colspan="3" style="text-align: center">EXTREME</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center">Score</th>
+                    <th style="text-align: center">FC</th>
+                    <th style="text-align: center">Ranking</th>
+                    <th style="text-align: center">Score</th>
+                    <th style="text-align: center">FC</th>
+                    <th style="text-align: center">Ranking</th>
+                    <th style="text-align: center">Score</th>
+                    <th style="text-align: center">FC</th>
+                    <th style="text-align: center">Ranking</th>
+                </tr>
+            </thead>
         </table>
     </div>
 
@@ -110,57 +129,46 @@
                         data: function (value, type, row) {
                             return "<a href=/player/detail/?uid=" + value.UID + ">" + value.PID + "</a>";
                         },
-                        title: "Player",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "Play_Count",
-                        title: "PC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "BAS_Score",
-                        title: "BASIC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "BAS_FC",
-                        title: "FC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "BAS_Rank",
-                        title: "Ranking",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "ADV_Score",
-                        title: "ADVANCED",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "ADV_FC",
-                        title: "FC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "ADV_Rank",
-                        title: "Ranking",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "EXT_Score",
-                        title: "EXTREME",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "EXT_FC",
-                        title: "FC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "EXT_Rank",
-                        title: "Ranking",
                         className: "dt-head-center dt-body-center"
                     }
                 ],
@@ -173,7 +181,7 @@
                 ],
                 pageLength: 20,
                 lengthMenu: [[20, 50, 100, -1], [20, 50, 100, "ALL"]],
-                scrollY: 480
+                scrollY: 468
             });
 
             <!--score_table.bootstrapTable( {-->

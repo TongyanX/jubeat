@@ -22,22 +22,32 @@
         </div>
     </div>
 
-    <div>
-        <input placeholder="player_id" id="player_id">
-    </div>
+    <h3>Upload</h3>
 
     <div>
-        <input type="file" name="file" id="file_upload_1">
-        <input type="file" name="file" id="file_upload_2">
+        <p><input placeholder="player_id" id="player_id"></p>
+
+        <div class="row">
+            <div class="col-md-2">
+                <p>MusicScores.sqlite </p>
+                <p>MusicScores.sqlite-wal </p>
+            </div>
+            <div class="col-md-10">
+                <p><input type="file" name="file" id="file_upload_1"></p>
+                <p><input type="file" name="file" id="file_upload_2"></p>
+            </div>
+        </div>
+
         <button  type="button" class="btn btn-default" onclick="FileUpload()">上传</button>
     </div>
+
     <br/>
+
+    <h3>View</h3>
+
     <div>
-        <input placeholder="player_id" id="player_id_view">
+        <p><input placeholder="player_id" id="player_id_view"></p>
         <button  type="button" class="btn btn-default" onclick="viewScore()">查看</button>
-    </div>
-    <div>
-        <table id="score_table"></table>
     </div>
 
 <script>
@@ -68,6 +78,8 @@
                 }
                 else {
                     alert("您在数据库中的ID已更新。\n原ID：" + callback + "\n新ID：" + id);
+                    $("#player_id_view").val(id);
+                    viewScore();
                 };
             },
             error: function() {

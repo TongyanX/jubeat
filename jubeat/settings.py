@@ -126,3 +126,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ACCESSORY_DIR = '/scores_files/'
+SKP_CSV_DIR = '/skp_csv/'

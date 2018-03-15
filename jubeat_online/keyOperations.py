@@ -1,55 +1,11 @@
 # -*- coding: utf-8 -*-
 """Classes & Operations"""
 from jubeat import settings
+from jubeat_online.dataClasses import SongScores, SongInfo
 from sqlite3 import connect as s_con
 from MySQLdb import connect as m_con
 import os
 import json
-
-
-class SongScores(object):
-    """Song scores."""
-    def __init__(self, data_tuple):
-        self.id = int(data_tuple[0])
-        self.bas = int(data_tuple[1])
-        self.adv = int(data_tuple[2])
-        self.ext = int(data_tuple[3])
-        self.fc_bas = int(data_tuple[4])
-        self.fc_adv = int(data_tuple[5])
-        self.fc_ext = int(data_tuple[6])
-        self.pc = int(data_tuple[7])
-
-
-class SongInfo(object):
-    """Song info."""
-    def __init__(self, info_dict):
-        if "ArtistE" not in info_dict["key"]:
-            if len(info_dict["integer"]) == 5:
-                self.id = int(info_dict["integer"][0])
-                self.title = info_dict["string"][1]
-                self.artist = info_dict["string"][0] if info_dict["string"][0] is not None else None
-                self.bas = int(info_dict["integer"][2])
-                self.adv = int(info_dict["integer"][1])
-                self.ext = int(info_dict["integer"][3])
-            elif len(info_dict["integer"]) == 4:
-                self.id = int(info_dict["string"][1])
-                self.title = info_dict["string"][2]
-                self.artist = info_dict["string"][0] if info_dict["string"][0] is not None else None
-                self.bas = int(info_dict["integer"][1])
-                self.adv = int(info_dict["integer"][0])
-                self.ext = int(info_dict["integer"][2])
-            else:
-                pass
-        else:
-            self.id = int(info_dict["string"][2])
-            self.title = info_dict["string"][3]
-            self.artist = info_dict["string"][0] if info_dict["string"][0] is not None else None
-            self.bas = int(info_dict["integer"][1])
-            self.adv = int(info_dict["integer"][0])
-            self.ext = int(info_dict["integer"][2])
-
-        if (self.id > 100050000) and (self.id < 100060000):
-            self.title += " [2]"
 
 
 def empty_score(score):
@@ -241,8 +197,10 @@ class Player(object):
     def get_score_summary(self, whole_level_dict):
         """Generate personal summary."""
         level_list = []
+        total_list = []
         for level in range(1, 11):
             average_list, rating_list = self.average_and_rating(level)
+            total_list += average_list
 
             average = sum(average_list) / len(average_list) if len(average_list) != 0 else "--"
             level_dict = dict(Level=level, Average=average)
@@ -254,13 +212,21 @@ class Player(object):
 
             if "NP" not in level_dict:
                 level_dict["NP"] = 0
-            if whole_level_dict[level] != len(rating_list):
-                level_dict["NP"] += whole_level_dict[level] - len(rating_list)
-            level_dict["Total"] = whole_level_dict[level]
+            if len(whole_level_dict[level]) != len(rating_list):
+                level_dict["NP"] += len(whole_level_dict[level]) - len(rating_list)
+            level_dict["Total"] = len(whole_level_dict[level])
 
             level_list.append(level_dict)
 
-        return json.dumps(sorted(level_list, key=lambda x: int(x["Level"])))
+        average = sum(total_list) / len(total_list) if len(total_list) != 0 else "--"
+        total_dict = dict(Level="Total", Average=average)
+        for rating in ["Total", "NP", "E", "D", "C", "B", "A", "S", "SS", "SSS", "EXC"]:
+            total_dict[rating] = sum([data.get(rating, 0) for data in level_list])
+
+        output = sorted(level_list, key=lambda x: int(x["Level"]))
+        output.append(total_dict)
+
+        return json.dumps(output)
 
     def id_checker(self):
         """Check player_id and user_id."""
@@ -346,15 +312,15 @@ class Songs(object):
         for song in song_list:
             if song[0] not in [100050010, 100050011, 100050031]:  # These 3 songs only have EXT chart
                 if song[3] not in level_dict:
-                    level_dict[song[3]] = 0
-                level_dict[song[3]] += 1
+                    level_dict[song[3]] = []
+                level_dict[song[3]].append(dict(SID=song[0], Title=song[1], Artist=song[2], Difficulty="BAS"))
                 if song[4] not in level_dict:
-                    level_dict[song[4]] = 0
-                level_dict[song[4]] += 1
+                    level_dict[song[4]] = []
+                level_dict[song[4]].append(dict(SID=song[0], Title=song[1], Artist=song[2], Difficulty="ADV"))
 
             if song[5] not in level_dict:
-                level_dict[song[5]] = 0
-            level_dict[song[5]] += 1
+                level_dict[song[5]] = []
+            level_dict[song[5]].append(dict(SID=song[0], Title=song[1], Artist=song[2], Difficulty="EXT"))
         return level_dict
 
     @staticmethod
@@ -440,6 +406,21 @@ class ID(object):
                           db=database_info["NAME"])
         self.cursor = self.conn.cursor()
 
+    def reset_id_table(self):
+        """Reset id table."""
+        statement = "DROP TABLE IF EXISTS ID"
+        self.cursor.execute(statement)
+
+        statement = "CREATE TABLE IF NOT EXISTS ID(" \
+                    "UID TEXT, " \
+                    "PID TEXT, " \
+                    "PRIMARY KEY(UID))"
+
+        self.cursor.execute(statement)
+        self.conn.commit()
+
+    def get_uid(self):
+        """Get uid when pid is given or get pid when uid is given."""
         if self.uid == 0:
             statement = "SELECT UID FROM ID WHERE PID = \"%s\""
             self.cursor.execute(statement % self.pid)
@@ -447,21 +428,11 @@ class ID(object):
             if temp is not None:
                 self.uid = temp[0]
 
+    def get_pid(self):
+        """Get pid when uid is given."""
         if self.pid == 0:
             statement = "SELECT PID FROM ID WHERE UID = \"%s\""
             self.cursor.execute(statement % self.uid)
             temp = self.cursor.fetchone()
             if temp is not None:
                 self.pid = temp[0]
-
-
-def main():
-    """Main function"""
-    st = Songs()
-    st.reset_song_table()
-    st.update_song()
-    st.get_song_scores(0)
-
-
-if __name__ == '__main__':
-    main()

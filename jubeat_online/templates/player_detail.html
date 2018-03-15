@@ -20,7 +20,7 @@
 <body>
     <div class="row" style="background-color: #C0C0C0">
         <div class="col-md-8">
-            <h1 id="player"></h1>
+            <h2 id="player"></h2>
         </div>
         <div class="col-md-4" style="text-align: right">
             <br/>
@@ -31,8 +31,28 @@
     <p></p>
 
     <div>
-        <table id="score_table" class="display cell-border">
-            <thead style="background-color: #C0C0C0"></thead>
+        <table id="score_table" class="stripe hover row-border cell-border compact">
+            <thead style="background-color: #C0C0C0">
+                <tr>
+                    <th rowspan="2" style="text-align: center">Title</th>
+                    <th rowspan="2" style="text-align: center">Artist</th>
+                    <th rowspan="2" style="text-align: center">PC</th>
+                    <th colspan="3" style="text-align: center">BASIC</th>
+                    <th colspan="3" style="text-align: center">ADVANCED</th>
+                    <th colspan="3" style="text-align: center">EXTREME</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center">Lv</th>
+                    <th style="text-align: center">Score</th>
+                    <th style="text-align: center">FC</th>
+                    <th style="text-align: center">Lv</th>
+                    <th style="text-align: center">Score</th>
+                    <th style="text-align: center">FC</th>
+                    <th style="text-align: center">Lv</th>
+                    <th style="text-align: center">Score</th>
+                    <th style="text-align: center">FC</th>
+                </tr>
+            </thead>
         </table>
     </div>
 
@@ -86,7 +106,17 @@
         data: "uid=" + uid,
         dataType: "text",
         success: function(callback) {
-            $("#player").html(callback);
+            var pid = callback;
+
+            $.ajax({
+                url: "/pc/",
+                type: "get",
+                data: "uid=" + uid,
+                dataType: "text",
+                success: function(callback) {
+                    $("#player").html(pid + "&nbsp&nbsp&nbsp&nbsp[Total Play Count: " + callback + "]");
+                }
+            });
 
             score_table.DataTable( {
                 ajax: {
@@ -98,62 +128,52 @@
                         data: function (value, type, row) {
                             return "<a href=/song/?sid=" + value.SID + ">" + value.Title + "</a>";
                         },
-                        title: "Title",
+                        width: "25%",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "Artist",
-                        title: "Artist",
+                        width: "25%",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "Play_Count",
-                        title: "PC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "BAS_Level",
-                        title: "BAS",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "BAS_Score",
-                        title: "Score",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "BAS_FC",
-                        title: "FC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "ADV_Level",
-                        title: "ADV",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "ADV_Score",
-                        title: "Score",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "ADV_FC",
-                        title: "FC",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "EXT_Level",
-                        title: "EXT",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "EXT_Score",
-                        title: "Score",
                         className: "dt-head-center dt-body-center"
                     },
                     {
                         data: "EXT_FC",
-                        title: "FC",
                         className: "dt-head-center dt-body-center"
                     }
                 ],
@@ -166,7 +186,7 @@
                 ],
                 pageLength: 50,
                 lengthMenu: [[20, 50, 100, 200, -1], [20, 50, 100, 200, "ALL"]],
-                scrollY: 530
+                scrollY: 520
             });
 
             <!--score_table.bootstrapTable( {-->

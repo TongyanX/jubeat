@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.http import HttpResponse
 from .keyOperations import Player, Songs, ID
+import json
 
 
 def upload(request):
@@ -28,6 +29,7 @@ def p_check(request):
     pid = request.GET["pid"]
     print(pid)
     checker = ID(pid=pid)
+    checker.get_uid()
     return HttpResponse(checker.uid)
 
 
@@ -35,6 +37,7 @@ def u_check(request):
     """Check a given uid exists or not."""
     uid = request.GET["uid"]
     checker = ID(uid=uid)
+    checker.get_pid()
     return HttpResponse(checker.pid)
 
 
@@ -65,3 +68,11 @@ def get_song_scores(request):
     sid = int(request.GET["sid"])
     song_obj = Songs()
     return HttpResponse(song_obj.get_song_scores(sid))
+
+
+def get_total_pc(request):
+    """Get total pc of a player."""
+    uid = request.GET["uid"]
+    player_obj = Player(user_id=uid)
+    score_list = json.loads(player_obj.get_from_database())
+    return HttpResponse(sum([data["Play_Count"] for data in score_list]))
