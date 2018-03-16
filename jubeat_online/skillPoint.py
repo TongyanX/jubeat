@@ -256,6 +256,7 @@ class SkillPoint(object):
                 uid = player[0]
                 pid = player[1]
                 output_dict = json.loads(self.get_skp_summary(uid))[0]
+                output_dict["UID"] = uid
                 output_dict["PID"] = pid
                 output_list.append(output_dict)
             return json.dumps(output_list)

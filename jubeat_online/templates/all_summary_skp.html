@@ -63,7 +63,9 @@
         },
         columns: [
             {
-                data: "PID",
+                data: function (value, type, row) {
+                    return "<a href=/player/detail/skp/?uid=" + value.UID + ">" + value.PID + "</a>";
+                },
                 title: "Player",
                 className: "dt-head-center dt-body-center"
             },

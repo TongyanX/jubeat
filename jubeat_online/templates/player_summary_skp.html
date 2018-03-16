@@ -24,6 +24,7 @@
         </div>
         <div class="col-md-4" style="text-align: right">
             <br/>
+            <button type="button" class="btn btn-default" onclick="switchPage_all()">All</button>
             <button type="button" class="btn btn-default" onclick="switchPage_det()">Detail</button>
             <button type="button" class="btn btn-default" onclick="switchPage_norm()">Normal Mode</button>
             <button type="button" class="btn btn-default" onclick="switchPage_home()">Home</button>
@@ -101,7 +102,8 @@
                 <!--columnDefs: [-->
                     <!---->
                 <!--],-->
-                paging: false
+                paging: false,
+                ordering: false
             });
 
             <!--score_table.bootstrapTable( {-->
@@ -209,6 +211,10 @@
             <!--});-->
         }
     });
+
+    function switchPage_all() {
+        window.location.href="/all/summary/skp";
+    };
 
     function switchPage_det() {
         window.location.href="/player/detail/skp/?uid="+uid;
