@@ -80,7 +80,20 @@ def get_total_pc(request):
 
 
 def get_skp(request):
-    """Get all scores of a player."""
+    """Get skp of a player."""
     uid = request.GET["uid"]
     skp_obj = SkillPoint()
     return HttpResponse(skp_obj.get_skp_result(uid))
+
+
+def get_skp_summary(request):
+    """Get skp summary of a player."""
+    uid = request.GET["uid"]
+    skp_obj = SkillPoint()
+    return HttpResponse(skp_obj.get_skp_summary(uid))
+
+
+def get_all_skp_summary(request):
+    """Get skp summaries of all players."""
+    skp_obj = SkillPoint()
+    return HttpResponse(skp_obj.get_all_skp_summary())

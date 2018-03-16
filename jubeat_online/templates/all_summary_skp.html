@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jubeat scores record website</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!--<link rel="stylesheet" href="{% static 'bootstrap-table-master/src/bootstrap-table.css' %}">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!--<script src="{% static 'bootstrap-table-master/src/bootstrap-table.js' %}"></script>-->
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+    <div class="row" style="background-color: #C0C0C0">
+        <div class="col-md-8">
+            <h2>All Players' SKP</h2>
+        </div>
+        <div class="col-md-4" style="text-align: right">
+            <br/>
+            <button type="button" class="btn btn-default" onclick="switchPage_home()">Home</button>
+        </div>
+    </div>
+
+    <p></p>
+
+    <div>
+        <table id="score_table" class="display cell-border compact" style="width:100%">
+            <thead style="background-color: #C0C0C0"></thead>
+        </table>
+    </div>
+
+<script>
+    var score_table = $("#score_table");
+
+    $.fn.dataTable.ext.type.order["level-pre"] = function (x) {
+        switch(x) {
+            case "Lv10 零段": return 0;
+            case "Lv10 初段": return 1;
+            case "Lv10 二段": return 2;
+            case "Lv10 三段": return 3;
+            case "Lv10 四段": return 4;
+            case "Lv10 五段": return 5;
+            case "Lv10 六段": return 6;
+            case "Lv10 七段": return 7;
+            case "Lv10 八段": return 8;
+            case "Lv10 九段": return 9;
+            case "Lv10 十段": return 10;
+            case "Lv10 皆伝": return 11;
+        };
+    };
+
+    score_table.DataTable( {
+        ajax: {
+            url: "/summary/skp/all/",
+            dataSrc: ""
+        },
+        columns: [
+            {
+                data: "PID",
+                title: "Player",
+                className: "dt-head-center dt-body-center"
+            },
+            {
+                data: "Level",
+                title: "Level",
+                className: "dt-head-center dt-body-center"
+            },
+            {
+                data: "Average",
+                title: "Average",
+                defaultContent: "",
+                className: "dt-head-center dt-body-center"
+            },
+            {
+                data: "Played_Songs",
+                title: "Played",
+                defaultContent: "",
+                className: "dt-head-center dt-body-center"
+            },
+            {
+                data: "Total_Play_Count",
+                title: "Total PC",
+                defaultContent: "",
+                className: "dt-head-center dt-body-center"
+            },
+            {
+                data: "SKP_50",
+                title: "SKP_50",
+                defaultContent: "",
+                className: "dt-head-center dt-body-center"
+            },
+            {
+                data: "Next",
+                title: "Next",
+                defaultContent: "",
+                className: "dt-head-center dt-body-center"
+            },
+            {
+                data: "MAX_50",
+                title: "MAX_50",
+                defaultContent: "",
+                className: "dt-head-center dt-body-center"
+            }
+        ],
+        columnDefs: [
+            { targets: 1, type: "level" },
+            { targets: 1, orderData: [1, 5, 2, 3] },
+            {
+                targets: [5, 6],
+                render: function(data, type, row) {
+                    data = data.toString();
+                    if (data.lastIndexOf(".") == -1) {
+                        return data + ".00";
+                    }
+                    else if (data.lastIndexOf(".") == data.length - 2) {
+                        return data + "0";
+                    }
+                    else {
+                        return data;
+                    };
+                }
+            },
+        ],
+        order: [[ 1, "desc" ]],
+        pageLength: 20,
+        lengthMenu: [[20, 50, 100, -1], [20, 50, 100, "ALL"]],
+        scrollY: 550
+    });
+
+    function switchPage_home() {
+        window.location.href="/home";
+    };
+</script>
+</body>
+
+</html>

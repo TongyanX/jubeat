@@ -58,6 +58,30 @@ def ranking(score_list):
     return ranking_dict
 
 
+def rating(score):
+    """Return rating."""
+    if score == 1000000:
+        return "EXC"
+    elif score >= 980000:
+        return "SSS"
+    elif score >= 950000:
+        return "SS"
+    elif score >= 900000:
+        return "S"
+    elif score >= 850000:
+        return "A"
+    elif score >= 800000:
+        return "B"
+    elif score >= 700000:
+        return "C"
+    elif score >= 500000:
+        return "D"
+    elif score != -1:
+        return "E"
+    else:
+        return "NP"
+
+
 class Player(object):
     """Score-related operations."""
     def __init__(self, scores_file=None, wal_file=None, player_id=None, user_id=None):
@@ -171,35 +195,13 @@ class Player(object):
         output_list = []
         for song in song_list:
             song = [song[0]] + list(song[9: 11]) + list(map(add_lv, song[11:])) + [song[7]] + \
-                   list(map(empty_score, song[1: 4])) + list(map(fc_or_not, song[4: 7]))
+                   list(map(empty_score, song[1: 4])) + list(map(fc_or_not, song[4: 7])) + \
+                   list(map(rating, song[1: 4]))
             output_dict = dict(zip(["SID", "Title", "Artist", "BAS_Level", "ADV_Level", "EXT_Level", "Play_Count",
-                                    "BAS_Score", "ADV_Score", "EXT_Score", "BAS_FC", "ADV_FC", "EXT_FC"], song))
+                                    "BAS_Score", "ADV_Score", "EXT_Score", "BAS_FC", "ADV_FC", "EXT_FC",
+                                    "BAS_Rating", "ADV_Rating", "EXT_Rating"], song))
             output_list.append(output_dict)
         return json.dumps(output_list)
-
-    @staticmethod
-    def rating(score):
-        """Return rating."""
-        if score == 1000000:
-            return "EXC"
-        elif score >= 980000:
-            return "SSS"
-        elif score >= 950000:
-            return "SS"
-        elif score >= 900000:
-            return "S"
-        elif score >= 850000:
-            return "A"
-        elif score >= 800000:
-            return "B"
-        elif score >= 700000:
-            return "C"
-        elif score >= 500000:
-            return "D"
-        elif score != -1:
-            return "E"
-        else:
-            return "NP"
 
     def average_and_rating(self, level):
         """Generate average list and rating list."""
@@ -219,7 +221,7 @@ class Player(object):
         score_list += [score[0] for score in self.cursor.fetchall()]
 
         average_list = filter(lambda x: x != -1, score_list)
-        rating_list = list(map(self.rating, score_list))
+        rating_list = list(map(rating, score_list))
 
         return average_list, rating_list
 
@@ -373,9 +375,10 @@ class Songs(object):
                     continue
                 else:
                     song_scores = [song_scores[0]] + list(map(empty_score, song_scores[1: 4])) + \
+                                  list(map(rating, song_scores[1: 4])) + \
                                   list(map(fc_or_not, song_scores[4: 7])) + [song_scores[7]]
-                    output_dict = dict(zip(["SID", "BAS_Score", "ADV_Score", "EXT_Score",
-                                            "BAS_FC", "ADV_FC", "EXT_FC", "Play_Count"], song_scores))
+                    output_dict = dict(zip(["SID", "BAS_Score", "ADV_Score", "EXT_Score", "BAS_Rating", "ADV_Rating",
+                                            "EXT_Rating", "BAS_FC", "ADV_FC", "EXT_FC", "Play_Count"], song_scores))
                     output_dict.update(dict(UID=uid, PID=pid))
                     output_list.append(output_dict)
             if len(output_list) == 0:

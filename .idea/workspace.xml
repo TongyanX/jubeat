@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0078cf0-fdb6-4cca-a337-58da337b15d8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/寿司/MusicScores.sqlite-wal" afterPath="$PROJECT_DIR$/test/寿司/MusicScores.sqlite-wal" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jubeat_online/templates/all_summary_skp.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/keyOperations.py" afterPath="$PROJECT_DIR$/jubeat_online/keyOperations.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/requests.py" afterPath="$PROJECT_DIR$/jubeat_online/requests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/skillPoint.py" afterPath="$PROJECT_DIR$/jubeat_online/skillPoint.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/templates/player_detail.html" afterPath="$PROJECT_DIR$/jubeat_online/templates/player_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html" afterPath="$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/templates/player_summary.html" afterPath="$PROJECT_DIR$/jubeat_online/templates/player_summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html" afterPath="$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/templates/song.html" afterPath="$PROJECT_DIR$/jubeat_online/templates/song.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/urls.py" afterPath="$PROJECT_DIR$/jubeat_online/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jubeat_online/views.py" afterPath="$PROJECT_DIR$/jubeat_online/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +24,100 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="player_detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="requests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/requests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="keyOperations.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/keyOperations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="360" column="30" lean-forward="false" selection-start-line="360" selection-start-column="30" selection-end-line="360" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="skillPoint.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/skillPoint.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="134" column="27" lean-forward="false" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="27" />
+              <folding>
+                <element signature="e#67#94#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all_summary_skp.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/all_summary_skp.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="122" column="42" lean-forward="true" selection-start-line="122" selection-start-column="42" selection-end-line="122" selection-end-column="42" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_summary_skp.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-596">
+              <caret line="46" column="2" lean-forward="false" selection-start-line="46" selection-start-column="2" selection-end-line="46" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_summary.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="204" column="32" lean-forward="false" selection-start-line="204" selection-start-column="32" selection-end-line="204" selection-end-column="32" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_detail_skp.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="281" column="16" lean-forward="false" selection-start-line="281" selection-start-column="16" selection-end-line="281" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="song.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/song.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="236" column="28" lean-forward="true" selection-start-line="234" selection-start-column="16" selection-end-line="236" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+            <state relative-caret-position="375">
+              <caret line="114" column="6" lean-forward="true" selection-start-line="101" selection-start-column="4" selection-end-line="114" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -40,73 +136,19 @@
                 <element signature="n#style#0;n#th#6;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#7;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#8;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#9;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#10;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#11;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player_detail_skp.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jubeat_online/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player_summary.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="190" column="42" lean-forward="false" selection-start-line="190" selection-start-column="42" selection-end-line="190" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="skillPoint.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jubeat_online/skillPoint.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="162" column="96" lean-forward="false" selection-start-line="162" selection-start-column="96" selection-end-line="162" selection-end-column="96" />
-              <folding>
-                <element signature="e#67#94#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player_summary_skp.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="311" column="36" lean-forward="false" selection-start-line="311" selection-start-column="36" selection-end-line="311" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="75" column="32" lean-forward="false" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="song.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jubeat_online/templates/song.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="182" column="56" lean-forward="false" selection-start-line="182" selection-start-column="56" selection-end-line="182" selection-end-column="56" />
+            <state relative-caret-position="345">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -171,18 +213,19 @@
         <option value="$PROJECT_DIR$/jubeat_online/dataClasses.py" />
         <option value="$PROJECT_DIR$/jubeat_online/SKP.py" />
         <option value="$PROJECT_DIR$/jubeat/settings.py" />
-        <option value="$PROJECT_DIR$/jubeat_online/keyOperations.py" />
         <option value="$PROJECT_DIR$/jubeat_online/templates/player_skp_detail.html" />
-        <option value="$PROJECT_DIR$/jubeat_online/requests.py" />
-        <option value="$PROJECT_DIR$/jubeat_online/views.py" />
-        <option value="$PROJECT_DIR$/jubeat_online/urls.py" />
-        <option value="$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html" />
         <option value="$PROJECT_DIR$/jubeat_online/templates/home.html" />
-        <option value="$PROJECT_DIR$/jubeat_online/templates/player_summary.html" />
-        <option value="$PROJECT_DIR$/jubeat_online/skillPoint.py" />
-        <option value="$PROJECT_DIR$/jubeat_online/templates/song.html" />
-        <option value="$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html" />
+        <option value="$PROJECT_DIR$/jubeat_online/keyOperations.py" />
         <option value="$PROJECT_DIR$/jubeat_online/templates/player_detail.html" />
+        <option value="$PROJECT_DIR$/jubeat_online/templates/song.html" />
+        <option value="$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html" />
+        <option value="$PROJECT_DIR$/jubeat_online/urls.py" />
+        <option value="$PROJECT_DIR$/jubeat_online/views.py" />
+        <option value="$PROJECT_DIR$/jubeat_online/requests.py" />
+        <option value="$PROJECT_DIR$/jubeat_online/skillPoint.py" />
+        <option value="$PROJECT_DIR$/jubeat_online/templates/player_summary.html" />
+        <option value="$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html" />
+        <option value="$PROJECT_DIR$/jubeat_online/templates/all_summary_skp.html" />
       </list>
     </option>
   </component>
@@ -441,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521096953192</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Some Small Updates">
+      <created>1521099782769</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1521099782769</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -497,7 +547,8 @@
     <MESSAGE value="Done with DataTable" />
     <MESSAGE value="More Formatting;&#10;Beginning of Skill Point" />
     <MESSAGE value="Done with Detail SKP Table" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done with Detail SKP Table" />
+    <MESSAGE value="Some Small Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some Small Updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -584,14 +635,14 @@
             <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#0;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#th#1;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#2;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#3;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#4;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#th#5;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#6;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#7;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#8;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#10;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#11;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -682,14 +733,14 @@
             <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#0;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#th#1;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#2;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#3;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#4;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#th#5;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#6;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#7;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#th#8;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#10;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#th#11;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -815,99 +866,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="75" column="32" lean-forward="false" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jubeat_online/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="28" column="32" lean-forward="true" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+        <state relative-caret-position="338">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jubeat_online/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="75" lean-forward="true" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/keyOperations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5625">
-          <caret line="380" column="37" lean-forward="true" selection-start-line="380" selection-start-column="37" selection-end-line="380" selection-end-column="37" />
+        <state relative-caret-position="345">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jubeat_online/requests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="85" column="52" lean-forward="false" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
-          <folding>
-            <element signature="e#24#63#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="311" column="36" lean-forward="false" selection-start-line="311" selection-start-column="36" selection-end-line="311" selection-end-column="36" />
+        <state relative-caret-position="306">
+          <caret line="95" column="33" lean-forward="true" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/jubeat_online/keyOperations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="75" column="32" lean-forward="false" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/skillPoint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="162" column="96" lean-forward="false" selection-start-line="162" selection-start-column="96" selection-end-line="162" selection-end-column="96" />
-          <folding>
-            <element signature="e#67#94#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/song.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="182" column="56" lean-forward="false" selection-start-line="182" selection-start-column="56" selection-end-line="182" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="190" column="42" lean-forward="false" selection-start-line="190" selection-start-column="42" selection-end-line="190" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="46" />
+        <state relative-caret-position="90">
+          <caret line="360" column="30" lean-forward="false" selection-start-line="360" selection-start-column="30" selection-end-line="360" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        <state relative-caret-position="375">
+          <caret line="114" column="6" lean-forward="true" selection-start-line="101" selection-start-column="4" selection-end-line="114" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -926,6 +928,66 @@
             <element signature="n#style#0;n#th#6;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#7;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#8;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#9;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#10;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#11;n#tr#1;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/skillPoint.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="134" column="27" lean-forward="false" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="27" />
+          <folding>
+            <element signature="e#67#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="204" column="32" lean-forward="false" selection-start-line="204" selection-start-column="32" selection-end-line="204" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_summary_skp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-596">
+          <caret line="46" column="2" lean-forward="false" selection-start-line="46" selection-start-column="2" selection-end-line="46" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/player_detail_skp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="281" column="16" lean-forward="false" selection-start-line="281" selection-start-column="16" selection-end-line="281" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/song.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="236" column="28" lean-forward="true" selection-start-line="234" selection-start-column="16" selection-end-line="236" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jubeat_online/templates/all_summary_skp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="122" column="42" lean-forward="true" selection-start-line="122" selection-start-column="42" selection-end-line="122" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

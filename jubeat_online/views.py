@@ -28,3 +28,7 @@ def player_detail_skp(request):
 
 def player_summary_skp(request):
     return render(request, "player_summary_skp.html")
+
+
+def all_summary_skp(request):
+    return render(request, "all_summary_skp.html")
